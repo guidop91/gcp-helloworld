@@ -17,6 +17,8 @@
 // [START gae_node_request_example]
 const express = require('express');
 const winston = require('winston')
+
+const app = express();
 const consoleTransport = new winston.transports.Console()
 const myWinstonOptions = {
     transports: [consoleTransport]
@@ -26,11 +28,10 @@ const logger = new winston.createLogger(myWinstonOptions)
 app.use(logRequest)
 app.use(logError)
 
-const app = express();
 
 app.get('/', (req, res) => {
   res.status(200)
-  .send('Hello, world!')
+  .send('<h1>Hello, world!</h1><p>It\'s nice to meet you!</p>')
   .end();
 });
 
